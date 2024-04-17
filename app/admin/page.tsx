@@ -1,11 +1,12 @@
-import { UserButton } from "@clerk/nextjs";
 import React from "react";
+import { auth } from "@clerk/nextjs";
 
-export default function Admin() {
+export default async function Admin() {
+  const { userId } = auth();
+
   return (
     <div>
-      <h1>Admin</h1>
-      <UserButton />
+      <div className="flex-[0.8]">content</div>
     </div>
   );
 }
