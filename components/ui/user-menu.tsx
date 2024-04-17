@@ -17,6 +17,7 @@ import {
 import UserAvatar from "./user-avatar";
 import { SignOutButton } from "@clerk/nextjs";
 import { LogOutIcon, Settings } from "lucide-react";
+import Link from "next/link";
 
 export default function UserMenu() {
   return (
@@ -35,10 +36,10 @@ export default function UserMenu() {
           <MenubarSeparator color="#27272A" />
           <MenubarItem>
             <SignOutButton>
-              <span className="flex gap-3 items-center">
+              <Link href="/sign-in" className="flex gap-3 items-center">
                 <LogOutIcon size={14} />
                 <span>Logout</span>
-              </span>
+              </Link>
             </SignOutButton>
           </MenubarItem>
         </MenubarContent>
