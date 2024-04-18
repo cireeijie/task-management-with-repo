@@ -1,20 +1,36 @@
 "use client";
 
 import React from "react";
-import { ClipboardCheck, SquareDashedBottomCode } from "lucide-react";
+import {
+  ClipboardCheck,
+  LayoutDashboard,
+  SquareDashedBottomCode,
+  SquareTerminal,
+  Terminal,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navItems = [
   {
-    title: "Todos",
-    href: "/admin/todos",
+    title: "Dashboard",
+    href: "/admin",
+    icon: <LayoutDashboard className="h-5 w-5" />,
+  },
+  {
+    title: "Tasks",
+    href: "/admin/tasks",
     icon: <ClipboardCheck className="h-5 w-5" />,
   },
   {
     title: "Repository",
     href: "/admin/repository",
     icon: <SquareDashedBottomCode className="h-5 w-5" />,
+  },
+  {
+    title: "Playground",
+    href: "/admin/playground",
+    icon: <SquareTerminal className="h-5 w-5" />,
   },
 ];
 
@@ -28,8 +44,10 @@ export default function NavItems({ className }: { className: string }) {
           key={item.href}
           href={item.href}
           className={`${
-            pathname === item.href ? "bg-[#27272A]" : "bg-transparent"
-          } p-3 rounded-md flex gap-3`}
+            pathname === item.href
+              ? "bg-[#27272A] text-white"
+              : "bg-transparent text-[#27272A]"
+          } p-3 rounded-md flex gap-3 items-center`}
         >
           {item.icon}
           {item.title}

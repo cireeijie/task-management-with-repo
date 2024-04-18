@@ -23,7 +23,7 @@ export default function UserMenu() {
   return (
     <Menubar className="p-0 border-[0] h-[auto] bg-transparent">
       <MenubarMenu>
-        <MenubarTrigger className="bg-black focus:bg-black p-2 w-full border-[#27272A] border-[1px] rounded-md">
+        <MenubarTrigger className="p-2 w-full border-[#27272A] border-[1px] rounded-md cursor-pointer">
           <UserAvatar />
         </MenubarTrigger>
         <MenubarContent>
@@ -33,10 +33,13 @@ export default function UserMenu() {
               <span>Settings</span>
             </span>
           </MenubarItem>
-          <MenubarSeparator color="#27272A" />
+          <MenubarSeparator />
           <MenubarItem>
             <SignOutButton>
-              <Link href="/sign-in" className="flex gap-3 items-center">
+              <Link
+                href="/sign-in"
+                className="flex gap-3 items-center h-[100%] w-full"
+              >
                 <LogOutIcon size={14} />
                 <span>Logout</span>
               </Link>

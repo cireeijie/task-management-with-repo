@@ -13,9 +13,9 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] bg-[#09090B]">
+    <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] gap-7">
       <SideNav />
-      <div className="flex flex-col">{children}</div>
+      <div className="flex flex-col p-3">{children}</div>
     </div>
   );
 }

@@ -6,7 +6,9 @@ export default async function Admin() {
 
   return (
     <div>
-      <div className="flex-[0.8]">content</div>
+      <div className="w-full h-[58px] flex items-center">
+        <h1 className="text-2xl font-bold">Dashboard</h1>
+      </div>
     </div>
   );
 }
