@@ -6,17 +6,32 @@ export default authMiddleware({
   ignoredRoutes: ["/((?!api|trpc))(_next.*|.+.[w]+$)", "/api/settings"],
   afterAuth(auth, req, evt) {
     if (!auth.userId && !auth.isPublicRoute) {
-      return redirectToSignIn({ returnBackUrl: req.url });
+      const homeURL = new URL("/", req.url);
+      return NextResponse.redirect(homeURL);
     }
 
     if (auth.userId && !auth.isPublicRoute) {
+      if (req.nextUrl.pathname === "/admin") {
+        const dashboardUrl = new URL("/admin/dashboard", req.url);
+        return NextResponse.redirect(dashboardUrl);
+      }
+
       return NextResponse.next();
     }
 
-    return NextResponse.next();
+    if (auth.userId && auth.isPublicRoute) {
+      return NextResponse.redirect(new URL("/admin", req.url));
+    }
   },
 });
 
 export const config = {
   matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
 };
+function intlMiddleware(
+  req: import("next/server").NextRequest & {
+    experimental_clerkUrl: import("next/dist/server/web/next-url").NextURL;
+  }
+) {
+  throw new Error("Function not implemented.");
+}

@@ -23,7 +23,7 @@ export default function UserMenu() {
   return (
     <Menubar className="p-0 border-[0] h-[auto] bg-transparent">
       <MenubarMenu>
-        <MenubarTrigger className="p-2 w-full border-[#27272A] border-[1px] rounded-md cursor-pointer">
+        <MenubarTrigger className="p-2 w-full border-[#E2E8F0] border-[1px] rounded-md cursor-pointer">
           <UserAvatar />
         </MenubarTrigger>
         <MenubarContent>

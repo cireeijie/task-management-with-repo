@@ -19,7 +19,7 @@ export default async function UserAvatar() {
       <span className="text-[#27272A] flex-1 text-start">
         {user?.firstName}
       </span>
-      <ChevronDown color="#27272A" size={22} />
+      <ChevronDown color="#0D142780" size={22} />
     </div>
   );
 }

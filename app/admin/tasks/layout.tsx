@@ -1,7 +1,8 @@
 import React from "react";
 import type { Metadata } from "next";
 import InnerNav from "@/components/ui/inner-nav";
-import { InnerNavSearchbar } from "@/components/ui/inner-nav-searchbar";
+import Filter from "@/components/ui/filter";
+import PopoverForm from "@/components/ui/popover-form";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -30,10 +31,13 @@ export default async function RootLayout({
         <div className="w-full h-[58px] flex items-center">
           <h1 className="text-2xl font-bold">Tasks</h1>
         </div>
-        <InnerNavSearchbar innerNavItems={innerNavItems} />
+        <div className="flex gap-2">
+          <Filter items={innerNavItems} />
+          <PopoverForm />
+        </div>
         <InnerNav className="" navItems={innerNavItems} />
       </div>
-      <div className="flex flex-col p-3">{children}</div>
+      <div className="flex flex-col">{children}</div>
     </div>
   );
 }

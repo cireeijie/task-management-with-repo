@@ -14,7 +14,7 @@ import { usePathname } from "next/navigation";
 const navItems = [
   {
     title: "Dashboard",
-    href: "/admin",
+    href: "/admin/dashboard",
     icon: <LayoutDashboard className="h-5 w-5" />,
   },
   {
@@ -44,7 +44,7 @@ export default function NavItems({ className }: { className: string }) {
           key={item.href}
           href={item.href}
           className={`${
-            pathname === item.href
+            pathname.includes(item.href)
               ? "bg-[#27272A] text-white"
               : "bg-transparent text-[#27272A]"
           } p-3 rounded-md flex gap-3 items-center`}

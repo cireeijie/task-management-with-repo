@@ -15,7 +15,7 @@ export default async function RootLayout({
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] gap-7">
       <SideNav />
-      <div className="flex flex-col p-3">{children}</div>
+      <div className="flex flex-col p-3 h-[100%]">{children}</div>
     </div>
   );
 }

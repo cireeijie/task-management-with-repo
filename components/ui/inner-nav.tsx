@@ -5,6 +5,7 @@ import React from "react";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import PopoverForm from "./popover-form";
 
 export default function InnerNav({
   className,
@@ -25,10 +26,10 @@ export default function InnerNav({
             pathname === item.href
               ? "bg-[#27272A] text-white"
               : "bg-transparent text-[#27272A]"
-          } p-3 rounded-md flex gap-3 items-center`}
+          } py-2 px-3  rounded-md flex gap-3 items-center`}
         >
           <NotepadText size={22} />
-          {item.title}
+          <span className="text-sm">{item.title}</span>
         </Link>
       ))}
     </nav>
