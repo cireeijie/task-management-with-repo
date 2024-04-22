@@ -7,7 +7,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import {} from "@radix-ui/react-popover";
-import AddTaskForm from "./add-task-form";
+import CreateForm from "./create-form";
 
 export default function PopoverForm() {
   return (
@@ -18,7 +18,7 @@ export default function PopoverForm() {
         </Button>
       </PopoverTrigger>
       <PopoverContent>
-        <AddTaskForm />
+        <CreateForm />
       </PopoverContent>
     </Popover>
   );

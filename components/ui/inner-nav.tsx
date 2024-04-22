@@ -1,6 +1,6 @@
 "use client";
 
-import { NotepadText } from "lucide-react";
+import { NotepadText, SquareDashedBottomCode } from "lucide-react";
 import React from "react";
 
 import Link from "next/link";
@@ -20,15 +20,20 @@ export default function InnerNav({
     <nav className={className}>
       {navItems.map((item: any) => (
         <Link
-          key={item.href}
-          href={item.href}
+          key={item.id}
+          href={`${pathname}?id=${item.id}`}
           className={`${
-            pathname === item.href
+            pathname.includes(item.id)
               ? "bg-[#27272A] text-white"
               : "bg-transparent text-[#27272A]"
           } py-2 px-3  rounded-md flex gap-3 items-center`}
         >
-          <NotepadText size={22} />
+          {pathname.includes("tasks") ? (
+            <NotepadText size={22} />
+          ) : (
+            <SquareDashedBottomCode />
+          )}
+
           <span className="text-sm">{item.title}</span>
         </Link>
       ))}

@@ -1,9 +1,6 @@
 "use client";
-
 import * as React from "react";
 import { Check, ChevronsUpDown } from "lucide-react";
-
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
   Command,
@@ -18,13 +15,12 @@ import {
 } from "@/components/ui/popover";
 import { CommandList } from "cmdk";
 import Link from "next/link";
-
+import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 
 export default function Filter({ items }: { items: any }) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
-
   const pathname = usePathname();
 
   return (
@@ -47,7 +43,7 @@ export default function Filter({ items }: { items: any }) {
             {items.map((item: any) => (
               <CommandItem
                 key={item.id}
-                value={item.id}
+                value={item.title}
                 aria-disabled={false}
                 className="cursor-pointer"
                 onSelect={(currentValue: any) => {
@@ -56,7 +52,7 @@ export default function Filter({ items }: { items: any }) {
                 }}
               >
                 <Link
-                  href={`${pathname}?id=${item.href}`}
+                  href={`${pathname}?id=${item.id}`}
                   className="flex items-center w-full"
                 >
                   <Check
