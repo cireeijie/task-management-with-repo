@@ -21,7 +21,7 @@ export default function InnerNav({
       {navItems.map((item: any) => (
         <div key={item.id}>
           <Link
-            href={`${pathname}?id=${item.id}`}
+            href={`${pathname}/${item.id}`}
             className={`${
               pathname.includes(item.id)
                 ? "bg-[#27272A] text-white"
