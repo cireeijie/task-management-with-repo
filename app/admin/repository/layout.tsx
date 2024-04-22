@@ -33,7 +33,7 @@ export default async function RootLayout({
         </div>
         <InnerNav className="" navItems={data} />
       </div>
-      <div className="flex flex-col">{children}</div>
+      <div className="flex flex-col w-full">{children}</div>
     </div>
   );
 }

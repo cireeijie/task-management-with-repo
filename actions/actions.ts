@@ -1,5 +1,11 @@
 import { db } from "@/app/api/firebase";
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDoc,
+  getDocs,
+} from "firebase/firestore";
 
 export async function getData(collectionName: string) {
   let data: any[] = [];
@@ -22,4 +28,8 @@ export async function getDataById(collectionName: string, id: string) {
   const data = await getDoc(docRef);
 
   return data.data();
+}
+
+export async function deleteDataById(collectionName: string, id: any) {
+  await deleteDoc(doc(db, collectionName, id));
 }

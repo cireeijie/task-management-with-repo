@@ -25,7 +25,14 @@ export default function Filter({ items }: { items: any }) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
 
+  let path = "";
   const pathname = usePathname();
+  if (pathname.includes("tasks")) {
+    path = "/admin/tasks";
+  }
+  if (pathname.includes("repository")) {
+    path = "/admin/repository";
+  }
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -56,7 +63,7 @@ export default function Filter({ items }: { items: any }) {
                 }}
               >
                 <Link
-                  href={`${pathname}?id=${item.href}`}
+                  href={`${path}/${item.href}`}
                   className="flex items-center w-full"
                 >
                   <Check

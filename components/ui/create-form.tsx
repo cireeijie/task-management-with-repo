@@ -51,22 +51,16 @@ export default function CreateForm() {
 
     try {
       const docRef = await addDoc(collection(db, "repositories"), data);
-      message = `${pathname.includes("tasks") && "Task"} ${
-        pathname.includes("repository") && "Repository"
-      } created successfully!`;
+      const formName = pathname.includes("tasks") ? "Task" : "Repository";
+
+      message = `${formName} created successfully!`;
     } catch (e) {
-      toast;
-      console.log("Error adding document", e);
+      message = "An error occured. Please try again.";
     } finally {
       setLoading(false);
     }
     toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
+      title: message,
     });
   }
 
@@ -132,7 +126,7 @@ export default function CreateForm() {
               </FormItem>
             )}
           />
-          <Button type="submit">
+          <Button type="submit" disabled={loading}>
             {loading
               ? `Adding ${pathname.includes("tasks") ? "task" : ""}${
                   pathname.includes("repository") ? "repository" : ""

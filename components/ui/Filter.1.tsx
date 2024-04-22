@@ -17,11 +17,25 @@ import { CommandList } from "cmdk";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 export default function Filter({ items }: { items: any }) {
+  const [data, setData] = useState(items);
+
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
+  let path = "";
+  let collection = "";
+
   const pathname = usePathname();
+  if (pathname.includes("tasks")) {
+    path = "/admin/tasks";
+    collection = "tasks";
+  }
+  if (pathname.includes("repository")) {
+    path = "/admin/repository";
+    collection = "repositories";
+  }
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -40,7 +54,7 @@ export default function Filter({ items }: { items: any }) {
         <Command>
           <CommandInput placeholder="Search task..." />
           <CommandList>
-            {items.map((item: any) => (
+            {data.map((item: any) => (
               <CommandItem
                 key={item.id}
                 value={item.title}
@@ -52,7 +66,7 @@ export default function Filter({ items }: { items: any }) {
                 }}
               >
                 <Link
-                  href={`${pathname}?id=${item.id}`}
+                  href={`${path}/${item.id}`}
                   className="flex items-center w-full"
                 >
                   <Check
