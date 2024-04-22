@@ -1,5 +1,5 @@
 import { db } from "@/app/api/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 
 export async function getData(collectionName: string) {
   let data: any[] = [];
@@ -15,4 +15,11 @@ export async function getData(collectionName: string) {
   });
 
   return data;
+}
+
+export async function getDataById(collectionName: string, id: string) {
+  const docRef = doc(db, collectionName, id);
+  const data = await getDoc(docRef);
+
+  return data.data();
 }

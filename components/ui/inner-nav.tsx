@@ -19,23 +19,24 @@ export default function InnerNav({
   return (
     <nav className={className}>
       {navItems.map((item: any) => (
-        <Link
-          key={item.id}
-          href={`${pathname}?id=${item.id}`}
-          className={`${
-            pathname.includes(item.id)
-              ? "bg-[#27272A] text-white"
-              : "bg-transparent text-[#27272A]"
-          } py-2 px-3  rounded-md flex gap-3 items-center`}
-        >
-          {pathname.includes("tasks") ? (
-            <NotepadText size={22} />
-          ) : (
-            <SquareDashedBottomCode />
-          )}
+        <div key={item.id}>
+          <Link
+            href={`${pathname}?id=${item.id}`}
+            className={`${
+              pathname.includes(item.id)
+                ? "bg-[#27272A] text-white"
+                : "bg-transparent text-[#27272A]"
+            } py-2 px-3  rounded-md flex gap-3 items-center`}
+          >
+            {pathname.includes("tasks") ? (
+              <NotepadText size={22} />
+            ) : (
+              <SquareDashedBottomCode />
+            )}
 
-          <span className="text-sm">{item.title}</span>
-        </Link>
+            <span className="text-sm">{item.title}</span>
+          </Link>
+        </div>
       ))}
     </nav>
   );
